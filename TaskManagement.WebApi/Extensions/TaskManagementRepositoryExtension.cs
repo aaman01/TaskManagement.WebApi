@@ -6,9 +6,9 @@ namespace TaskManagement.WebApi.Extensions;
 internal static class TaskManagementRepositoryExtension
 {
     /// <summary>
-    /// Configures the services.
+    /// Configures the repository.
     /// </summary>
-    /// <param name="services">The services.</param>
+    /// <param name="services">The repository.</param>
     public static void AddTaskManagementRepository(this IServiceCollection services)
     {
         services.AddScoped<ITaskRepository, TaskRepository>();
