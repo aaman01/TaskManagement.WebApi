@@ -11,6 +11,6 @@ namespace TaskManagement.WebApi
         /// <summary>
         /// Represents the collection of task entities.
         /// </summary>
-        public DbSet<Task> Tasks { get; init; }
+        public DbSet<Models.Entities.Task> Tasks { get; init; }
     }
 }

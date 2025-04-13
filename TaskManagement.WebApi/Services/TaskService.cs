@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography.Xml;
 using TaskManagement.WebApi.Models.RequestModel;
 using TaskManagement.WebApi.Models.ResponseModel;
+using TaskManagement.WebApi.Repository.Interfaces;
 using TaskManagement.WebApi.Services.Interfaces;
 
 namespace TaskManagement.WebApi.Services;
@@ -22,7 +23,7 @@ public class TaskService : ITaskService
 
             var taskResponse = tasks.Select(t =>
             {
-                var response = new TaskResponseModel()
+                var response = new TaskResponseModel
                 {
                     Id = t.Id,
                     Title = t.Title,
@@ -30,6 +31,8 @@ public class TaskService : ITaskService
                     DueDate = t.DueDate,
                     IsCompleted = t.IsCompleted
                 };
+
+                return response;
             });
 
             return taskResponse;
@@ -92,7 +95,7 @@ public class TaskService : ITaskService
     }
 
     ///<inheritdoc/>
-    public async void Update(long id, TaskRequestModel taskRequestModel)
+    public async Task Update(long id, TaskRequestModel taskRequestModel)
     {
         if (string.IsNullOrEmpty(taskRequestModel.Title))
         {
@@ -106,7 +109,7 @@ public class TaskService : ITaskService
             throw new KeyNotFoundException("Task not found");
         }
 
-        task.title = taskRequestModel.Title;
+        task.Title = taskRequestModel.Title;
         task.Description = taskRequestModel.Description;
         task.DueDate = taskRequestModel.DueDate;
         task.IsCompleted = taskRequestModel.IsCompleted;
@@ -115,7 +118,7 @@ public class TaskService : ITaskService
     }
 
     ///<inheritdoc/>
-    public async void Delete(long id)
+    public async Task Delete(long id)
     {
         var task = await _taskRepository.Get(id);
 

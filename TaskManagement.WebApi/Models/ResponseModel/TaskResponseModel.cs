@@ -16,7 +16,7 @@
         /// <value>
         /// The name.
         /// </value>
-        public string? Title { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the task description.
