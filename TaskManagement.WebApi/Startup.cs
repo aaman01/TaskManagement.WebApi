@@ -1,4 +1,5 @@
-﻿using TaskManagement.WebApi.Extensions;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManagement.WebApi.Extensions;
 
 namespace TaskManagement.WebApi
 {
@@ -23,6 +24,8 @@ namespace TaskManagement.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<TaskContext>(options =>
+            options.UseInMemoryDatabase("TaskManagementDB"));
 
             // Register TaskManagement - Service
             services.AddTaskManagementService();

@@ -1,4 +1,7 @@
-﻿namespace TaskManagement.WebApi.Extensions;
+﻿using TaskManagement.WebApi.Services;
+using TaskManagement.WebApi.Services.Interfaces;
+
+namespace TaskManagement.WebApi.Extensions;
 
 internal static class TaskManagementServicesExtension
 {
@@ -8,5 +11,6 @@ internal static class TaskManagementServicesExtension
     /// <param name="services">The services.</param>
     public static void AddTaskManagementService(this IServiceCollection services)
     {
+        services.AddScoped<ITaskService, TaskService>();
     }
 }
