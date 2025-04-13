@@ -35,6 +35,7 @@ namespace TaskManagement.WebApi
 
             // Add Health Middleware
             services.AddHealthChecks();
+            services.AddSwaggerGen();
         }
 
         /// <summary>
@@ -47,6 +48,8 @@ namespace TaskManagement.WebApi
         {
             if (env.IsDevelopment())
             {
+                app.UseSwagger();
+                app.UseSwaggerUI();
                 app.UseDeveloperExceptionPage();
             }
 
