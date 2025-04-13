@@ -48,7 +48,7 @@ public class TaskService : ITaskService
     {
         var task = await _taskRepository.Get(id);
 
-        if (task == null)
+        if (task is null)
         {
             throw new KeyNotFoundException("Task not found");
         }
@@ -113,7 +113,8 @@ public class TaskService : ITaskService
         task.Description = taskRequestModel.Description;
         task.DueDate = taskRequestModel.DueDate;
         task.IsComplete = taskRequestModel.IsComplete;
-
+        task.UpdatedAt = DateTime.UtcNow;
+       
         await _taskRepository.Update(task);
     }
 

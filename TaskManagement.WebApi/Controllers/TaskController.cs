@@ -78,12 +78,12 @@ public class TaskController : ControllerBase
     /// <param name="TaskRequestModel"></param>
     /// <returns>HTTP status code</returns>
     [HttpPut("{id:long}")]
-    public IActionResult Update(long id, [FromBody] TaskRequestModel taskUpdateRequestModel)
+    public async Task<IActionResult> Update(long id, [FromBody] TaskRequestModel taskRequestModel)
     {
         try
         {
-            _taskService.Update(id, taskUpdateRequestModel);
-            return Ok();
+            await _taskService.Update(id, taskRequestModel);
+            return Ok("Task updated");
         }
         catch (ArgumentNullException e)
         {
@@ -104,11 +104,11 @@ public class TaskController : ControllerBase
     /// </summary>
     /// <returns>HTTP status code</returns>
     [HttpDelete("{id:int}")]
-    public IActionResult Delete(long id)
+    public async Task<IActionResult> Delete(long id)
     {
         try
         {
-            _taskService.Delete(id);
+            await _taskService.Delete(id);
             return NoContent();
         }
         catch (KeyNotFoundException e)
