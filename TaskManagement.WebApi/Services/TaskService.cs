@@ -29,7 +29,7 @@ public class TaskService : ITaskService
                     Title = t.Title,
                     Description = t.Description,
                     DueDate = t.DueDate,
-                    IsCompleted = t.IsCompleted
+                    IsComplete = t.IsComplete
                 };
 
                 return response;
@@ -59,7 +59,7 @@ public class TaskService : ITaskService
             Title = task.Title,
             Description = task.Description,
             DueDate = task.DueDate,
-            IsCompleted = task.IsCompleted
+            IsComplete = task.IsComplete
         };
     }
 
@@ -76,7 +76,7 @@ public class TaskService : ITaskService
             Title = taskRequestModel.Title,
             Description = taskRequestModel.Description,
             DueDate = taskRequestModel.DueDate,
-            IsCompleted = taskRequestModel.IsCompleted,
+            IsComplete = taskRequestModel.IsComplete,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -88,7 +88,7 @@ public class TaskService : ITaskService
             Title = task.Title,
             Description = task.Description,
             DueDate = task.DueDate,
-            IsCompleted = task.IsCompleted
+            IsComplete = task.IsComplete
         };
 
         return taskResponse;
@@ -112,7 +112,7 @@ public class TaskService : ITaskService
         task.Title = taskRequestModel.Title;
         task.Description = taskRequestModel.Description;
         task.DueDate = taskRequestModel.DueDate;
-        task.IsCompleted = taskRequestModel.IsCompleted;
+        task.IsComplete = taskRequestModel.IsComplete;
 
         await _taskRepository.Update(task);
     }

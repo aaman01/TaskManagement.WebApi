@@ -24,9 +24,9 @@ public class TaskController : ControllerBase
     /// </summary>
     /// <returns>List of task</returns>
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var tasks = _taskService.GetAll();
+        var tasks = await _taskService.GetAll();
         return Ok(tasks);
     }
 
@@ -36,11 +36,11 @@ public class TaskController : ControllerBase
     /// <param name="id"></param>
     /// <returns>A task</returns>
     [HttpGet("{id:long}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
         try
         {
-            var task = _taskService.Get(id);
+            var task = await _taskService.Get(id);
             return Ok(task);
         }
         catch (KeyNotFoundException ex)
@@ -59,11 +59,11 @@ public class TaskController : ControllerBase
     /// <param name="taskRequestModel"></param>
     /// <returns>Created task Id</returns>
     [HttpPost]
-    public IActionResult Create([FromBody] TaskRequestModel taskRequestModel)
+    public async Task<IActionResult> Create([FromBody] TaskRequestModel taskRequestModel)
     {
         try
         {
-            var createdTask = _taskService.Create(taskRequestModel);
+            var createdTask = await _taskService.Create(taskRequestModel);
             return CreatedAtAction(nameof(Get), new { id = createdTask.Id }, createdTask);
         }
         catch (Exception ex)

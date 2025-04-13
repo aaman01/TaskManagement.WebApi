@@ -40,7 +40,7 @@
         /// <value>
         /// The is completed.
         /// </value>
-        public bool IsCompleted { get; set; }
+        public bool IsComplete { get; set; }
 
         /// <summary>
         /// Gets or sets the created at.

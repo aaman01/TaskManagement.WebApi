@@ -30,6 +30,9 @@ namespace TaskManagement.WebApi
             // Register TaskManagement - Service
             services.AddTaskManagementService();
 
+            // Register TaskManagement - Repository
+            services.AddTaskManagementRepository();
+
             // Add Health Middleware
             services.AddHealthChecks();
         }

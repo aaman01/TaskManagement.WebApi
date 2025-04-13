@@ -1,12 +1,27 @@
 {
-  "profiles": {
-    "TaskManagement.WebApi": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:61063;http://localhost:61064"
+    "profiles": {
+        "TaskManagement.WebApi": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "launchUrl": "health",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "applicationUrl": "http://localhost:61064"
+        },
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "launchUrl": "health",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
+    },
+    "iisSettings": {
+        "iisExpress": {
+            "applicationUrl": "http://localhost:61064/",
+            "sslPort": 0
+        }
     }
-  }
 }
