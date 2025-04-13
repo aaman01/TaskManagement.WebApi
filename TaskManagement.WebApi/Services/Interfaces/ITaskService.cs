@@ -36,7 +36,4 @@ public interface ITaskService
     /// </summary>
     /// <param name="id"></param>
     Task Delete(long id);
-
-
-
 }
